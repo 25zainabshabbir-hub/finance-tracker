@@ -1,3 +1,71 @@
+## 1.0.0 (2026-08-21)
+
+### Features
+
+* added dates filter ([e5b9fee](https://github.com/25zainabshabbir-hub/finance-tracker/commit/e5b9fee1018dc605c7b8ae908e4c4ab1af2b2995))
+* added navbar ([1f725fb](https://github.com/25zainabshabbir-hub/finance-tracker/commit/1f725fbc1c49d94ae6ca64b126c91bea03f8cbc0))
+* **app:** top-level error boundary and per-route page titles ([cbcf8a1](https://github.com/25zainabshabbir-hub/finance-tracker/commit/cbcf8a17bd9a35ab10d69e79432c78c244e05557))
+* **auth:** auto-login after signup ([83212d2](https://github.com/25zainabshabbir-hub/finance-tracker/commit/83212d24a91256e5509edb2e017263e70cb9a2a2))
+* **backend:** added networth ([b1302f1](https://github.com/25zainabshabbir-hub/finance-tracker/commit/b1302f12ce47a73958b3fea09db0a124c3228527))
+* **backend:** cashflow transaction edit & delete endpoints ([8e817c1](https://github.com/25zainabshabbir-hub/finance-tracker/commit/8e817c1919d25df9155e04d293528df60fac2bca))
+* **backend:** networth transaction list + edit & delete endpoints ([7723d2b](https://github.com/25zainabshabbir-hub/finance-tracker/commit/7723d2bcb150411fffdcb3f490fd8689cdff7a5e))
+* **charts:** readable money, axes, month labels + searchable grid ([c078fe2](https://github.com/25zainabshabbir-hub/finance-tracker/commit/c078fe22510d661e1930aa2b675a16e2b54214a3))
+* **dashboard:** styled, retryable loading/error/empty states ([5fb2991](https://github.com/25zainabshabbir-hub/finance-tracker/commit/5fb299145d1b2fea8182e8e2b66a2d70ade5ee56))
+* **data model:** added data and tables ([f83f407](https://github.com/25zainabshabbir-hub/finance-tracker/commit/f83f40744860778d332fad31fb25430f5078aa24))
+* **forms:** quicker entry and clearer validation ([487e226](https://github.com/25zainabshabbir-hub/finance-tracker/commit/487e2268390d634306265709e428fe31c47135ae))
+* **frontend:** edit & delete cashflow transactions ([a22dd70](https://github.com/25zainabshabbir-hub/finance-tracker/commit/a22dd70b9f760eb090b9d074a6a571bcfb10432e))
+* **frontend:** networth transactions list with edit & delete ([f0a92ac](https://github.com/25zainabshabbir-hub/finance-tracker/commit/f0a92ac4d64deb15bea805952a74d0b9da53c4c5))
+* **fullstac:** added first plot ([d693e94](https://github.com/25zainabshabbir-hub/finance-tracker/commit/d693e94f3a13c31ca9a8d858e1650c7828b4ddcc))
+* **nav:** add account menu with one-click logout ([4965cdb](https://github.com/25zainabshabbir-hub/finance-tracker/commit/4965cdb664d0c0f517ab93747d4652ba88d7f124))
+* **transactions:** add date field and add/save feedback ([be45f78](https://github.com/25zainabshabbir-hub/finance-tracker/commit/be45f78600d8b4dbea5ffe4ece74839162ccf6ab))
+* **ui:** add shared money formatting and currency metric tiles ([df8edc7](https://github.com/25zainabshabbir-hub/finance-tracker/commit/df8edc73abb48d1144c439bbb02623e07c43ab1e))
+* **workflows:** added cicd first version ([bc06bcf](https://github.com/25zainabshabbir-hub/finance-tracker/commit/bc06bcff6c02ea6c735664ab83c1f8a8ad6dc7fb))
+
+### Bug Fixes
+
+* **apiFetch:** normalized api ([a54f1c4](https://github.com/25zainabshabbir-hub/finance-tracker/commit/a54f1c4981324c7b1cfc100aa0fc2215b6ecf156))
+* **apiFetch:** reversed to previous ([1832762](https://github.com/25zainabshabbir-hub/finance-tracker/commit/1832762b2eaf6362223577510b78ec54e3538970))
+* **auth:** stop forcing logout on transient server errors ([f5c5a4c](https://github.com/25zainabshabbir-hub/finance-tracker/commit/f5c5a4ca0378ec8ede2b72689b794a2917cb9ac9))
+* **backend/frontend:** show data in transactions and remove DKK from plots ([1ffe432](https://github.com/25zainabshabbir-hub/finance-tracker/commit/1ffe432110cba0d36f14d66a79f397e0ff1ddf3d))
+* **backend:** added prod variable ([60ceaac](https://github.com/25zainabshabbir-hub/finance-tracker/commit/60ceaacc70da65f78f37dffad811d821a157397a))
+* **baseUrl:** changes urls in frontend ([b5c992d](https://github.com/25zainabshabbir-hub/finance-tracker/commit/b5c992dc7dff68b4fc0060b28acbbb47c54b91c4))
+* colours ([44fd4fd](https://github.com/25zainabshabbir-hub/finance-tracker/commit/44fd4fda3a2e0d614222d28f7046fe80a9c9fec5))
+* **frontend:** added responsive containers for sizes ([770a9d8](https://github.com/25zainabshabbir-hub/finance-tracker/commit/770a9d86077aaf1e8a0a12f058fdb70bd71ce305))
+* **frontend:** cleaned urls ([c910f73](https://github.com/25zainabshabbir-hub/finance-tracker/commit/c910f73412fa1ac7fc761e5564b53627c4404964))
+* **frontend:** corrected axis ([d8dfdad](https://github.com/25zainabshabbir-hub/finance-tracker/commit/d8dfdadbc41146a1d8c08e4364cdb2c850895d66))
+* **frontend:** corrected dropdown ([598c560](https://github.com/25zainabshabbir-hub/finance-tracker/commit/598c5608147470615e972fa5d9ea068c76266c75))
+* **frontend:** dates, remove expenses page ([00700cc](https://github.com/25zainabshabbir-hub/finance-tracker/commit/00700ccc6644c539e126a7d85c979cc9a75cbb72))
+* **frontend:** linting issues ([c789bed](https://github.com/25zainabshabbir-hub/finance-tracker/commit/c789bedff888a9df749630c6806a9aeff22ad6be))
+* **frontend:** react url in apiFetch ([8770946](https://github.com/25zainabshabbir-hub/finance-tracker/commit/87709469faeb9c616e5cc39195047889008f3a5e))
+* **login:** added missing slash ([765d27c](https://github.com/25zainabshabbir-hub/finance-tracker/commit/765d27cbf0444f7da4c6d3d0d11ef2cad3b1a919))
+* **login:** remove hardcoded url ([4aaaf03](https://github.com/25zainabshabbir-hub/finance-tracker/commit/4aaaf032c33ad28147b654a4ae32643ea323e2bc))
+* **migrations:** added ssl ([ffd9657](https://github.com/25zainabshabbir-hub/finance-tracker/commit/ffd9657ebbd443c98bbe97a74707840cefac04d5))
+* **migrations:** added users in the first migration ([d26be01](https://github.com/25zainabshabbir-hub/finance-tracker/commit/d26be012521c358581d9dbc116b4c419710ef259))
+* **migrations:** corrected drop duplicates ([880cc0d](https://github.com/25zainabshabbir-hub/finance-tracker/commit/880cc0d5066118b56f781066f26775319399f003))
+* **mobile:** stop the add button overlapping the bottom card ([ab810a4](https://github.com/25zainabshabbir-hub/finance-tracker/commit/ab810a4d1cb0f99c5fb3a66306be4620f2ceea33))
+* **releaserc:** installed locally ([efc71b1](https://github.com/25zainabshabbir-hub/finance-tracker/commit/efc71b1ed883f963bfe23c5f40b7e28db2a825b9))
+* uddated date in query ([0736e85](https://github.com/25zainabshabbir-hub/finance-tracker/commit/0736e85cf3a954509f43f9e0fc4983c92653ef16))
+* **workflow:** remove npm commands ([b93b13e](https://github.com/25zainabshabbir-hub/finance-tracker/commit/b93b13e50f20fa0a3a50a1e7e4d2d4c6e4be15a7))
+* **workflow:** remove npm commands ([113607c](https://github.com/25zainabshabbir-hub/finance-tracker/commit/113607c9262dd9bc425f206e57c7db6bd5a8bf77))
+* **workflows:** added npm run build ([25bcb9d](https://github.com/25zainabshabbir-hub/finance-tracker/commit/25bcb9d05399410fc5e1d25497cb793b54238cc9))
+* **year:** quick fix on getting current year ([0f26125](https://github.com/25zainabshabbir-hub/finance-tracker/commit/0f2612516f5a8bc3c238557767d9833dfa7983cf))
+
+### Documentation
+
+* added article reference ([a0be223](https://github.com/25zainabshabbir-hub/finance-tracker/commit/a0be2232ee96a444464a629377a39ce351bf0bac))
+* practical notes ([7e7337a](https://github.com/25zainabshabbir-hub/finance-tracker/commit/7e7337a8cb4a64d9ae0c12226a762a40856648d8))
+* **readme:** added networth additions ([40f1632](https://github.com/25zainabshabbir-hub/finance-tracker/commit/40f1632e70db58cc7b6253fb513884de1fddeb23))
+* **readme:** added short instructions and notes ([c2b8951](https://github.com/25zainabshabbir-hub/finance-tracker/commit/c2b89515a6c97a1a03e82f9cc6f4a0c1f0c65738))
+* update docs ([3eba372](https://github.com/25zainabshabbir-hub/finance-tracker/commit/3eba37271a7913ad1310fbd003ccb153c7ff1416))
+
+### Continuous Integration
+
+* corrected master brnach name ([31f2ad6](https://github.com/25zainabshabbir-hub/finance-tracker/commit/31f2ad6a28627796d63864de01691c64a53fb135))
+* **release:** added merged with docker deployment ([16e2094](https://github.com/25zainabshabbir-hub/finance-tracker/commit/16e2094c6e4602650df9152c4e680eb94a572857))
+* **release:** added write permission ([6617d9d](https://github.com/25zainabshabbir-hub/finance-tracker/commit/6617d9d1291d5556ab4c187613ebcd8af6fb8979))
+* **release:** fixed secrets ([2e7a537](https://github.com/25zainabshabbir-hub/finance-tracker/commit/2e7a537df4f3941cff097fe98ff2e314a15bcd09))
+* **workflows:** added manual migrations ([775e1a5](https://github.com/25zainabshabbir-hub/finance-tracker/commit/775e1a5b58827d749783db0ba71f59b855d1b204))
+
 ## [1.4.0](https://github.com/georgezefko/finance-tracker/compare/v1.3.0...v1.4.0) (2026-06-07)
 
 ### Features
