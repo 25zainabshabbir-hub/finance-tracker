@@ -2,38 +2,39 @@ name: Build, Push to ECR, and Deploy
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 permissions:
   id-token: write
   contents: read
 
 env:
-  AWS_REGION: eu-north-1                     # change to your actual AWS region
+  AWS_REGION: eu-north-1
   ECR_REGISTRY: 954935267955.dkr.ecr.eu-north-1.amazonaws.com
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    outputs: # A value produced by one job that another job can use later. 
-      image_tag: ${{ steps.vars.outputs.tag }} #Go to the step called vars and get its output called tag
+    outputs:
+      image_tag: ${{ steps.vars.outputs.tag }}
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Set image tag 
+      - name: Set image tag
         id: vars
-        run: echo "tag=${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT" #Take the first 7 characters of the SHA.
-      
+        run: echo "tag=${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::954935267955:role/github-actions-ecr-push
+          arn:aws:iam::954935267955:role/github-actions-ecr-push
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Log in to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Build and push backend image #Docker image is connected to the exact Git commit that produced it.
+      - name: Build and push backend image
         run: |
           docker build -t $ECR_REGISTRY/finance-backend:${{ steps.vars.outputs.tag }} ./backend 
           docker build -t $ECR_REGISTRY/finance-backend:latest ./backend
@@ -57,17 +58,17 @@ jobs:
   #deploy:
   #  needs: build-and-push
   #  runs-on: ubuntu-latest #I will give this job a temporary computer.That temporary computer is called a GitHub-hosted runner.
-                           #When the job finishes, the temporary runner is normally discarded.
+  #When the job finishes, the temporary runner is normally discarded.
   #  steps:
   #    - name: SSH into server and deploy #SSH= Secure Shell. It's a way to remotely access another computer safely.
-                                         #lets GitHub Actions remotely connect to your AWS Ubuntu server.
+  #lets GitHub Actions remotely connect to your AWS Ubuntu server.
   #      uses: appleboy/ssh-action@v1
   #      with:
   #        host: ${{ secrets.VM_HOST }} #The address/IP of your Ubuntu server.
   #        username: ${{ secrets.VM_USER }}
   #        key: ${{ secrets.VM_SSH_KEY }} #This is your SSH private key.It's stored in GitHub Secrets rather than written directly in your YAML.
-                                         #So GitHub can authenticate securely.
-                                         #scripts starts running commands on your AWS Ubuntu server after successfull connection with Ubuntu server
+  #So GitHub can authenticate securely.
+  #scripts starts running commands on your AWS Ubuntu server after successfull connection with Ubuntu server
   #        script: |
   #          aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 954935267955.dkr.ecr.eu-north-1.amazonaws.com
   #         cd /path/to/your/app
@@ -75,5 +76,3 @@ jobs:
   #          docker compose up -d
   #          echo "---- Container Status ----"
   #          docker ps
-
-            
