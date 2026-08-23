@@ -25,7 +25,6 @@ jobs:
         id: vars
         run: echo "tag=${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
 
-
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -56,24 +55,20 @@ jobs:
           docker push $ECR_REGISTRY/finance-db:${{ steps.vars.outputs.tag }}
           docker push $ECR_REGISTRY/finance-db:latest
 
-  #deploy:
-  #  needs: build-and-push
-  #  runs-on: ubuntu-latest #I will give this job a temporary computer.That temporary computer is called a GitHub-hosted runner.
-  #When the job finishes, the temporary runner is normally discarded.
-  #  steps:
-  #    - name: SSH into server and deploy #SSH= Secure Shell. It's a way to remotely access another computer safely.
-  #lets GitHub Actions remotely connect to your AWS Ubuntu server.
-  #      uses: appleboy/ssh-action@v1
-  #      with:
-  #        host: ${{ secrets.VM_HOST }} #The address/IP of your Ubuntu server.
-  #        username: ${{ secrets.VM_USER }}
-  #        key: ${{ secrets.VM_SSH_KEY }} #This is your SSH private key.It's stored in GitHub Secrets rather than written directly in your YAML.
-  #So GitHub can authenticate securely.
-  #scripts starts running commands on your AWS Ubuntu server after successfull connection with Ubuntu server
-  #        script: |
-  #          aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 954935267955.dkr.ecr.eu-north-1.amazonaws.com
-  #         cd /path/to/your/app
-  #          docker compose pull
-  #          docker compose up -d
-  #          echo "---- Container Status ----"
-  #          docker ps
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH into server and deploy
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.VM_SSH_KEY }}
+          script: |
+            aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 954935267955.dkr.ecr.eu-north-1.amazonaws.com
+            cd ~/finance-tracker
+            docker compose -f docker-compose.prod.yaml pull
+            docker compose -f docker-compose.prod.yaml up -d
+            echo "---- Container Status ----"
+            docker ps
