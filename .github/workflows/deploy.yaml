@@ -4,8 +4,8 @@ on:
   push:
     branches: [master]
 
-permissions:
-  id-token: write
+permissions: #GitHub Actions workflow permissions block
+  id-token: write #the workflow is allowed to request a short-lived OpenID Connect (OIDC) token from GitHub's token issuer.
   contents: read
 
 env:
@@ -72,3 +72,5 @@ jobs:
             docker compose -f docker-compose.prod.yaml up -d
             echo "---- Container Status ----"
             docker ps
+
+            
