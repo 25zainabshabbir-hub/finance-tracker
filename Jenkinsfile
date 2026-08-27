@@ -27,6 +27,7 @@ pipeline {
             slackSend(
                 tokenCredentialId: 'slack-webhook',
                 channel: 'C0BN7DM3LG6',
+                botUser: true,
                 color: 'good',
                 message: "Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}"
             )
@@ -35,6 +36,7 @@ pipeline {
             slackSend(
                 tokenCredentialId: 'slack-webhook',
                 channel: 'C0BN7DM3LG6',
+                botUser: true,
                 color: 'danger',
                 message: "Build FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}"
             )
