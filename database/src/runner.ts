@@ -71,9 +71,10 @@ export async function migrationRunner(direction: 'up' | 'down'): Promise<void> {
       console.error('Error during migration or seeding: ', err.stack);
     } else {
       console.error('An unexpected error occurred', err);
-    }
+    }  
+    throw err;
   } finally {
     await client.end();
     console.log('Database connection closed.');
-  }
+  } 
 }

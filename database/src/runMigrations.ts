@@ -7,5 +7,6 @@ import { migrationRunner } from './runner';
     console.log(`Migrations have been ${direction === 'up' ? 'applied' : 'rolled back'} successfully.`);
   } catch (error) {
     console.error(`An error occurred while running the ${process.argv[2]} migration: `, error);
+    process.exit(1);
   }
 })();

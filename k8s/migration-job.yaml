@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-migrate
+  namespace: finance
+spec:
+  backoffLimit: 6          # retries while Postgres is still starting
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: migrate
+          image: MIGRATIONS_IMAGE_PLACEHOLDER
+          command: ["npm", "run", "migrate:up"]
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef: {name: db-secret, key: POSTGRES_USER}
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef: {name: db-secret, key: POSTGRES_PASSWORD}
+            - name: POSTGRES_HOST
+              valueFrom:
+                configMapKeyRef: {name: finance-config, key: POSTGRES_HOST}
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef: {name: finance-config, key: POSTGRES_DB}
