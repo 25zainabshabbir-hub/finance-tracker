@@ -11,7 +11,7 @@ spec:
       containers:
         - name: migrate
           image: MIGRATIONS_IMAGE_PLACEHOLDER
-          command: ["npm", "run", "migrate:up"]
+          command: ["node", "dist/runMigrations.js", "up"]
           env:
             - name: POSTGRES_USER
               valueFrom:
