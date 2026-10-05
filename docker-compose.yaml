@@ -53,6 +53,6 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_HOST: ${POSTGRES_HOST}
       POSTGRES_DB: tracker
-    command: ["npm", "run", "migrate:up"]
+      command: ["node", "dist/runMigrations.js", "up"]
 volumes:
   postgres-data:
