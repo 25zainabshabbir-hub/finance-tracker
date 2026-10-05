@@ -1,21 +1,16 @@
-# Use an official Node runtime as a parent image
-FROM node:14
-
-# Set the working directory in the container
-WORKDIR /usr/src/app
-
-# Copy package.json and package-lock.json (or yarn.lock)
+FROM node:20-alpine AS build
+WORKDIR /app
 COPY package*.json ./
-
-# Install any needed packages
-RUN npm install
-
-# Bundle app source inside Docker image
+RUN npm ci
 COPY . .
 RUN npm run build
 
-# Make port available to the world outside this container
+FROM node:20-alpine
+WORKDIR /app
+ENV NODE_ENV=production
+COPY package*.json ./
+RUN npm ci --omit=dev
+COPY --from=build /app/dist ./dist
+USER node
 EXPOSE 8000
-
-# Define the command to run your app
-CMD npm run start:prod
+CMD ["node", "dist/tracker.js"]
