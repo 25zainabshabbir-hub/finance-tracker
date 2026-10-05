@@ -116,7 +116,7 @@ jobs:
         run: |
           PGUSER=$(az keyvault secret show --vault-name $VAULT --name postgres-user --query value -o tsv)
           echo "::add-mask::$PGUSER"
-          PGPASS=$(az keyvault secret show --vault-name $VAULT --name postgres-password --query value -o tsv)
+          PGPASS=$(az keyvault secret show --vault-name $VAULT --name postgress-password --query value -o tsv)
           echo "::add-mask::$PGPASS"
           JWT=$(az keyvault secret show --vault-name $VAULT --name jwt-secret --query value -o tsv)
           echo "::add-mask::$JWT"
